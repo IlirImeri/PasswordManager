@@ -5,37 +5,55 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        String UserName = "HelloWorld";
-        String password = "630#@1_d";
-        String email = "sde@example.com";
-        String website = "www.google.com";
-        String website2 = "google";
-
-        Database database = new Database();
-        //database.connect();
-        database.createTable();
-        // ! database.insertData(UserName,password,email,website);
-        database.selectData(website2);
-
-        /*Database database = new Database();
+        int scelta;
+        String username, password, email, website, search;
         Scanner input = new Scanner(System.in);
-        String username, password, email, website;
+        Database database = new Database();
 
-        System.out.println("Valori da inserire nel database:");
-
-        System.out.println("Username:");
-        username = input.nextLine();
-        System.out.println("Password:");
-        password = input.nextLine();
-        System.out.println("Email:");
-        email = input.nextLine();
-        System.out.println("Website:");
-        website = input.nextLine();
-
-        database.connect();
         database.createTable();
-        database.insertData(username,password,email,website);
-        System.out.println("Che password vuoi cercare");
-        database.selectData();*/
+
+        System.out.println("CIAO - Cosa vuoi fare?");
+        System.out.println("\t1 - Visualizza valori del database");
+        System.out.println("\t2 - Inserire valori nel database");
+        System.out.println("\t3 - Rimuovere valori dal database");
+        System.out.println("\t4 - Aggiornare valori dal database");
+        System.out.println("\t5 - Cercare valori nel database");
+        System.out.println("\t0 - Uscita");
+        System.out.println();
+
+        do {
+            System.out.println("Scelta:");
+            scelta = input.nextInt();
+            switch(scelta) {
+                case 1:
+                    System.out.println("Valori del database:");
+                    System.out.println();
+                    break;
+                case 2:
+                    System.out.println("Username:");
+                    input.nextLine();
+                    username = input.nextLine();
+                    System.out.println("Password:");
+                    password = input.nextLine();
+                    System.out.println("Email:");
+                    email = input.nextLine();
+                    System.out.println("Website:");
+                    website = input.nextLine();
+                    database.insertData(username,password,email,website);
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    System.out.println("Ricerca:");
+                    search = input.nextLine();
+                    database.selectData(search);
+                    break;
+                default:
+                    System.out.println("Uscita");
+            }
+        } while (scelta != 0);
+
     }
 }
